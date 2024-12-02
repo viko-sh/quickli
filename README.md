@@ -1,17 +1,20 @@
-# Create T3 App
+# Quickli code challenge stub
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Here is a working code base we've prepared for you. You should be able to stick in some environment variables and deploy it to Vercel to get it going in 5-10 minutes.
 
-## What's next? How do I make an app with this?
+## What's next?
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+You should sus it out before you start the challenge. We've kept the project as simple as possible so it's easy to extend.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Let us know when you're ready to start the challenge and we'll email it to you at the start of the 3 hour block.
+
+## Key technologies
+
+This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` and is composed of the following:
 
 - [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
+- [NextAuth.js](https://next-auth.js.org) (I fiddled about to get a bodgy version of credential auth working so that you don't need to worry about hooking up any oauth providers)
 - [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
@@ -27,3 +30,7 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## How do I hook up a db
+
+We've used a free mongodb instance (from mongo atlas) while spinning this up, but feel free to plug it into any database you want.

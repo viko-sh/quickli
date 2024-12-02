@@ -28,6 +28,8 @@ declare module "next-auth" {
   // }
 }
 
+const PREPEND_COOKIENAME = process.env.VERCEL ? "__Secure-" : "";
+
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -143,7 +145,7 @@ export async function authHandler(req: NextApiRequest, res: NextApiResponse) {
 
               res.setHeader(
                 "Set-Cookie",
-                `next-auth.session-token=${sessionToken}; ` +
+                `${PREPEND_COOKIENAME}next-auth.session-token=${sessionToken}; ` +
                   `Path=/; ` +
                   `Max-Age=${Math.round(60 * 60 * 24 * 7)}; ` +
                   `HttpOnly; ` +
@@ -164,7 +166,9 @@ export async function authHandler(req: NextApiRequest, res: NextApiResponse) {
             req.query.nextauth.includes("credentials") &&
             req.method === "POST"
           ) {
-            return req.cookies["next-auth.session-token"] ?? "";
+            return (
+              req.cookies[`${PREPEND_COOKIENAME}next-auth.session-token`] ?? ""
+            );
           }
           // Revert to default behaviour when not in the credentials provider callback flow
           return authConfig.jwt?.encode?.({ token, secret, maxAge });
