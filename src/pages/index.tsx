@@ -17,20 +17,19 @@ export default function Home() {
             Challenge <span className="text-xl text-gray-400">(Stub)</span>
           </h1>
           <div className="mx-auto max-w-2xl space-y-6">
-            {" "}
             <div className="rounded-lg border border-purple-800 bg-purple-900/30 p-6">
               <p className="text-lg text-white/80">
                 Before starting the challenge, familiarize yourself with the
                 application structure and complete a test deployment. This
-                preparation will ensure you can dive straight into coding when
-                the challenge begins.
+                preparation will ensure you can dive straight into coding /
+                solutioning when the challenge clock begins.
               </p>
             </div>
             <div className="rounded-lg border border-purple-800 bg-purple-900/30 p-6">
               <p className="text-lg text-white/80">
                 Clone the repository, review the documentation, and deploy to
-                your preferred hosting platform. Understanding the development
-                workflow now will help you focus on the challenge tasks later.
+                Vercel. Understanding the development workflow now will help you
+                focus on the challenge later.
               </p>
             </div>
           </div>
@@ -86,6 +85,14 @@ function AuthShowcase() {
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
+      {sessionData && (
+        <Link
+          className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+          href="/scenario"
+        >
+          Check out the scenarios page
+        </Link>
+      )}
     </div>
   );
 }
