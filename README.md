@@ -18,6 +18,8 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+We don't actually use t3 at Quickli but there is a lot of overlap conceptually so I figure it's a decent intro to how our app works.
+
 ## Learn More
 
 To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
@@ -29,8 +31,22 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 
 ## How do I deploy this?
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+1. Push this code to a fresh repo in github (5 mins)
+2. Create Vercel account (5 mins)
+3. Create free mongo atlas account and db (5 mins)
+4. Deploy code to Vercel
+5. Set environment variables `DATABASE_URL` (get this from Atlas) and `AUTH_SECRET` (can be anything)
+   - (same as what is in your local `.env` file)
+6. Redeploy after changing any env
 
-## How do I hook up a db
+I'm pretty familiar with Vercel, Mongo and github, so this whole process took me about 15 minutes to get deployed to a production instance and connected to a database.
+It may take a bit longer but there shouldn't be any major blockers.
 
-We've used a free mongodb instance (from mongo atlas) while spinning this up, but feel free to plug it into any database you want.
+Check out a deployed version here: (https://quickli-code-chal-stub.vercel.app/).
+
+Here is a guide if you want one (https://create.t3.gg/en/deployment/vercel).
+
+## Other tidbits
+
+- run `db:force-push` after updating the prisma schema (we don't need to worry too much about migrations because it's nosql)
+- Auth us basically textbook NextAuth with a few tweaks to make it work for username/password auth
