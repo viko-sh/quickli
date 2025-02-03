@@ -114,7 +114,7 @@ export const Dialog = ({ children, open, onOpenChange }: DialogProps) => {
         className="bg-background/80 fixed inset-0 backdrop-blur-sm"
         onClick={() => onOpenChange?.(false)}
       />
-      <div className="bg-background z-50 grid w-full max-w-lg gap-4 border p-6 shadow-lg duration-200 sm:rounded-lg">
+      <div className="bg-background z-50 grid w-full max-w-lg gap-4 border bg-white p-6 shadow-lg duration-200 sm:rounded-lg">
         {children}
       </div>
     </div>
@@ -173,7 +173,7 @@ export const DialogTitle = ({
   className = "",
 }: React.HTMLProps<HTMLHeadingElement>) => (
   <h2
-    className={`text-lg font-semibold leading-none tracking-tight ${className}`}
+    className={`text-lg font-semibold leading-none tracking-tight text-black ${className}`}
   >
     {children}
   </h2>
