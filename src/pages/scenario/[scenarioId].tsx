@@ -1,7 +1,8 @@
 import { type NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { api } from "~/utils/api";
+import Layout from "./layout";
+import Link from "next/link";
 
 const ScenarioPage: NextPage = () => {
   const router = useRouter();
@@ -43,34 +44,28 @@ const ScenarioPage: NextPage = () => {
   }
 
   return (
-    <>
-      <Head>
-        <title>{`${scenario.name} - Quickli Scenario`}</title>
-        <meta
-          name="description"
-          content={scenario.description ?? "Quickli Scenario Details"}
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="min-h-screen bg-gradient-to-b from-[#2e026d] to-[#15162c] p-8">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded-lg bg-white/10 p-6 text-white">
-            <h1 className="mb-4 text-4xl font-bold">{scenario.name}</h1>
+    <Layout title={`${scenario.name} - Quickli Scenario`}>
+      <div className="mx-auto max-w-4xl">
+        <Link
+          className="w-100 mb-3 block rounded-lg bg-purple-800 px-4 py-2 text-center text-white hover:bg-purple-700"
+          href="/scenario"
+        >
+          Back to scenarios
+        </Link>
+        <div className="rounded-lg bg-white/10 p-6 text-white">
+          <h1 className="mb-4 text-4xl font-bold">{scenario.name}</h1>
 
-            {scenario.description && (
-              <p className="mb-6 text-lg text-gray-300">
-                {scenario.description}
-              </p>
-            )}
+          {scenario.description && (
+            <p className="mb-6 text-lg text-gray-300">{scenario.description}</p>
+          )}
 
-            <div className="mt-4 text-sm text-gray-400">
-              <p>Created: {scenario.createdAt.toLocaleDateString()}</p>
-              <p>Last Updated: {scenario.updatedAt.toLocaleDateString()}</p>
-            </div>
+          <div className="mt-4 text-sm text-gray-400">
+            <p>Created: {scenario.createdAt.toLocaleDateString()}</p>
+            <p>Last Updated: {scenario.updatedAt.toLocaleDateString()}</p>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </Layout>
   );
 };
 
