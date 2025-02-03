@@ -5,13 +5,15 @@ import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 export const scenarioRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
-      z.object({ name: z.string().min(1), description: z.string().optional() }),
+      z.object({ name: z.string().min(1), description: z.string().optional(), income: z.string().optional(), type: z.string().optional() }),
     )
     .mutation(async ({ ctx, input }) => {
       return ctx.db.simplifiedQuickliScenario.create({
         data: {
           name: input.name,
           description: input.description,
+          income: input.income,
+          type: input.type,
           createdBy: { connect: { id: ctx.session.user.id } },
         },
       });
