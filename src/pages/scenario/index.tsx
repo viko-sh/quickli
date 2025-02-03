@@ -1,5 +1,4 @@
 import { type NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -14,6 +13,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  Select,
+  SelectOption,
 } from "~/components/shared";
 import { api } from "~/utils/api";
 import Layout from "./layout";
@@ -23,6 +24,8 @@ const ScenarioListPage: NextPage = () => {
   const [newScenario, setNewScenario] = useState({
     name: "",
     description: "",
+    income: "",
+    type: "",
   });
 
   const utils = api.useUtils();
@@ -32,7 +35,7 @@ const ScenarioListPage: NextPage = () => {
   const createScenario = api.scenario.create.useMutation({
     onSuccess: () => {
       setIsCreateDialogOpen(false);
-      setNewScenario({ name: "", description: "" });
+      setNewScenario({ name: "", description: "", income: "", type: "" });
       void utils.scenario.getAll.invalidate();
     },
   });
@@ -41,6 +44,8 @@ const ScenarioListPage: NextPage = () => {
     createScenario.mutate({
       name: newScenario.name,
       description: newScenario.description,
+      income: newScenario.income,
+      type: newScenario.type,
     });
   };
 
@@ -69,7 +74,7 @@ const ScenarioListPage: NextPage = () => {
               </DialogHeader>
               <div className="space-y-4 py-4">
                 <div className="space-y-2">
-                  <label className="text-sm text-white/90">Name</label>
+                  <label className="text-sm text-black/90">Name</label>
                   <Input
                     value={newScenario.name}
                     onChange={(e) =>
@@ -82,7 +87,7 @@ const ScenarioListPage: NextPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm text-white/90">Description</label>
+                  <label className="text-sm text-black/90">Description</label>
                   <Textarea
                     value={newScenario.description}
                     onChange={(e) =>
@@ -93,6 +98,35 @@ const ScenarioListPage: NextPage = () => {
                     }
                     placeholder="Enter scenario description"
                   />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm text-black/90">Income</label>
+                  <Input
+                    value={newScenario.income}
+                    onChange={(e) =>
+                      setNewScenario((prev) => ({
+                        ...prev,
+                        income: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm text-black/90">Income</label>
+                  <Select
+                    name="type"
+                    value={newScenario.type}
+                    onChange={(e) =>
+                      setNewScenario((prev) => ({
+                        ...prev,
+                        type: e.target.value,
+                      }))
+                    }
+                  >
+                    <SelectOption value="">Select an option</SelectOption>
+                    <SelectOption value="option1">Option 1</SelectOption>
+                    <SelectOption value="option2">Option 2</SelectOption>
+                  </Select>
                 </div>
                 <Button
                   onClick={handleCreate}

@@ -17,6 +17,8 @@ model SimplifiedQuickliScenario {
 
     name      String
     description String?
+    income String?
+    type String?
 }
 
 
