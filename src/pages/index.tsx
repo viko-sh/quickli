@@ -86,12 +86,26 @@ function AuthShowcase() {
         {sessionData ? "Sign out" : "Sign in"}
       </button>
       {sessionData && (
-        <Link
-          className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-          href="/scenario"
-        >
-          Check out the scenarios page
-        </Link>
+        <>
+          <Link
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            href="/scenario"
+          >
+            Check out the scenarios page
+          </Link>
+          <Link
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            href="/admin"
+          >
+            Check out the admin page
+          </Link>
+          <Link
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+            href="/magic"
+          >
+            magic link
+          </Link>
+        </>
       )}
     </div>
   );
