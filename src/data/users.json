@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "role": "Broker",
+    "isLive": true,
+    "lastSession": {
+      "deviceFingerprint": "abc123xyz",
+      "ipAddress": "192.168.1.20",
+      "browser": "Chrome 110",
+      "os": "Windows 10",
+      "location": "Sydney, Australia",
+      "lastLogin": "2025-01-10 09:45:00"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "role": "Staff",
+    "isLive": false,
+    "lastSession": {
+      "deviceFingerprint": "qwe789rty",
+      "ipAddress": "203.0.113.15",
+      "browser": "Firefox 108",
+      "os": "macOS 13",
+      "location": "Melbourne, Australia",
+      "lastLogin": "2025-01-08 14:22:10"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Sarah Johnson",
+    "email": "sarah@example.com",
+    "role": "Staff",
+    "isLive": true,
+    "lastSession": {
+      "deviceFingerprint": "lmn456opq",
+      "ipAddress": "10.0.0.200",
+      "browser": "Safari 16",
+      "os": "iOS 16",
+      "location": "Brisbane, Australia",
+      "lastLogin": "2025-01-11 17:55:30"
+    }
+  }
+]

@@ -69,6 +69,9 @@ model User {
     password      String
     emailVerified DateTime?
     image         String?
+    firmId        String   @db.ObjectId
+    brokerageFirm BrokerageFirm @relation(fields: [firmId], references: [id])
+    role          String  // "Admin", "Broker", "Staff"
     accounts      Account[]
     sessions      Session[]
     quickliScenarios         SimplifiedQuickliScenario[]
@@ -82,4 +85,43 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+
+model BrokerageFirm {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    seatLimit   Int @default(1) // Number of seats available
+    adminUsers  String[] // Array of user IDs who have admin access
+    status      String   // "active", "inactive", "suspended"
+    users      User[]
+    @@index([name])
+}
+
+model SeatAssignment {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    firmId     String   @db.ObjectId  // Reference to `BrokerageFirm`
+    userId     String?  @db.ObjectId  // User assigned to the seat (null if unassigned)
+    assignedAt DateTime @default(now())
+    status     String   // "active", "inactive", "pending"
+
+    @@index([firmId, userId])
+}
+
+model UserSessionLog {
+    id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    userId       String   @db.ObjectId
+    firmId       String   @db.ObjectId
+    sessionId    String   @unique
+    ipAddress    String
+    device       String
+    browser      String
+    os           String
+    location     String?
+    createdAt    DateTime @default(now())
+
+    @@index([firmId, userId, createdAt])
 }
